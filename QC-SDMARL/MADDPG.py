@@ -20,7 +20,7 @@ class MADDPG:
         self.tau = tau
         self.critic_criterion = torch.nn.MSELoss()
         self.device = device
-        # 用来判断是不是最优智能体
+
         self.flag = [0, False, 0]
         self.reward_scale = 100
 
@@ -42,16 +42,13 @@ class MADDPG:
             for agent, state in zip(self.agents, states)
         ]
 
-    # 更新参数
     def update(self, sample, i_agent, max_reward, i_episode):
         x = []
         obs, act, rew, next_obs, done = sample
         cur_agent = self.agents[i_agent]
         self.flag[0] = i_agent
         self.flag[2] = max_reward
-        # 提出的更新参数的方式
-        # 当前智能体判断自己是不是最优智能体
-        # 如果是最优智能体，保持原有的更新方式
+     
         if i_agent == max_reward:
             self.flag[1] = True
         else:
@@ -64,7 +61,7 @@ class MADDPG:
         all_target_act1 = [tool_functions.onehot_from_logits(pi(_next_obs, flag=True)) for pi, _next_obs in
                            zip(self.target_policies, next_obs)]
         # target_critic_input = torch.cat((*next_obs, *all_target_act), dim=1)
-        # 使用奖励来指导更新参数
+
         # target_critic_value = rew[i_agent].view(-1, 1) + self.gamma * cur_agent.target_critic(target_critic_input,
         #                                                                                       self.flag) * (
         #                               1 - done[i_agent].view(-1, 1))

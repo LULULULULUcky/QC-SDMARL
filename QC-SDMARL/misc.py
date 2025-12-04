@@ -97,7 +97,6 @@ def firmmax_sample(logits, temperature, dim=1):
     y = logits + sample_gumbel(logits.shape, tens_type=type(logits.data)) / temperature
     return F.softmax(y, dim=dim)
 
-# 这个好像是随机生成动作的，我看在DDPG里面的actor网络中用来初始化的
 def categorical_sample(probs, use_cuda=False):
     int_acs = torch.multinomial(probs, 1)
     if use_cuda:

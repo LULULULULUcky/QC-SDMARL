@@ -1,4 +1,4 @@
-#Start Guide
+# Start Guide
 Before you begin, ensure you have the following installed:
 Python 3.9​ (Required)
 pip​ (Python package manager)

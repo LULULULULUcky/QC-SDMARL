@@ -100,5 +100,3 @@ Rule: The second number (currently 36) represents the total number of agents. Wh
 3. Modify Visualization Parameters:
 Adjust the three relevant parameters at the top of multienvironment.py.
 
-# Or run the training script directly
-python train.py

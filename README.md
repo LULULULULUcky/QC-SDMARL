@@ -40,7 +40,7 @@ Features: Handles collaboration mechanisms between multiple agents, including co
 
 QMADDPG.py
 Function: The core innovation of this project.
-Features: Implements Quantum Computing Optimization (QCO)-driven weight allocation and QCO-driven experience replay buffer updates.
+Features: Implements Quantum Computing Optimization (QAO)-driven weight allocation and QAO-driven experience replay buffer updates.
 
 2. Environment Simulation Module
 
